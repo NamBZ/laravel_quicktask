@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\PostController;
 
 /*
@@ -14,9 +15,11 @@ use App\Http\Controllers\Admin\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('language/{language}', [
+    HomeController::class, 'changeLang'
+])->name('lang');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
