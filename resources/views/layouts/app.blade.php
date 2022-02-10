@@ -31,6 +31,12 @@
             <main>
                 {{ $slot }}
             </main>
+            <footer class="bg-white p-2 text-center text-gray-600">
+                <div class="text-center p-4">
+                    © 2021 Copyright:
+                    <a class="text-gray-600 font-semibold" href="https://nampt.me/">NamPT.Me</a>
+                </div>
+            </footer>
         </div>
     </body>
 </html>
