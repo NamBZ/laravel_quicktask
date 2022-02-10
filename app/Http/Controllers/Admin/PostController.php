@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use App\Models\Post;
 use App\Models\User;
 
@@ -18,7 +19,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = User::find(Auth::id())->posts()->orderBy('updated_at', 'DESC')->get();
+
+        return view('posts.index', [
+            'posts' => $posts,
+        ]);
     }
 
     /**
@@ -28,7 +33,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -39,7 +44,9 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        Post::create($request->validated());
+
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -48,9 +55,13 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($slug)
     {
-        //
+        $post = Post::where('slug', '=', $slug)->firstOrFail();
+
+        return view('posts.view', [
+            'post' => $post,
+        ]);
     }
 
     /**
@@ -61,7 +72,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', [
+            'post' => $post,
+        ]);
     }
 
     /**
