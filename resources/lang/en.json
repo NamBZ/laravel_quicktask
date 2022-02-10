@@ -1,0 +1,22 @@
+{
+    "Home": "Home",
+    "Login": "Login",
+    "Register": "Register",
+    "Logout": "Logout",
+    "Post Management": "Post Management",
+    "Latest Post": "Latest Post",
+    "List Post": "List Post",
+    "Empty Post": "There is no new post now!",
+    "Edit": "Edit",
+    "Delete": "Delete",
+    "Delete post?": "Delete post? Are you sure?",
+    "Create Post": "Create Post",
+    "Update Post": "Update Post",
+    "Title": "Title",
+    "Content": "Content",
+    "Description": "Description",
+    "Keyword": "Keyword",
+    "Post": "Post",
+    "Save": "Save",
+    "Whoops! Something went wrong.": "Whoops! Something went wrong."
+}
