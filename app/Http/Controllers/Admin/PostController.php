@@ -44,7 +44,7 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        Post::create($request->validated());
+        Post::firstOrCreate($request->validated());
 
         return redirect()->route('posts.index');
     }
@@ -72,8 +72,13 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $this->authorize('update', $post);
+
+        $users = User::all();
+
         return view('posts.edit', [
             'post' => $post,
+            'users' => $users,
         ]);
     }
 
@@ -86,7 +91,11 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $this->authorize('update', $post);
+
+        $post->update($request->validated());
+
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -97,6 +106,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $this->authorize('delete', $post);
+
+        $post->delete();
+
+        return redirect()->route('posts.index');
     }
 }

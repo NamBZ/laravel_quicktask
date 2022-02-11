@@ -20,6 +20,7 @@ class Post extends Model
         'description',
         'keyword',
         'slug',
+        'user_id',
     ];
 
     /**
