@@ -16,7 +16,7 @@
                     <div class="p-6">
                         <div class="overflow-x-auto">
                             <x-auth-validation-errors class="mb-4" :errors="$errors" />
-                            <form method="POST" action="{{ route('posts.update', $post->id) }}">
+                            <form method="POST" action="{{ route('posts.update', ['post' => $post]) }}">
                                 @csrf
                                 @method('PUT')
 
@@ -32,6 +32,17 @@
                                     <x-label for="content" :value="__('Content')" />
 
                                     <x-textarea id="content" class="block mt-1 w-full" name="content" :value="old('content', $post->content)" required />
+                                </div>
+
+                                <!-- Author -->
+                                <div class="mt-4">
+                                    <x-label for="user_id" :value="__('Author')" />
+
+                                    <select class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" id="user_id" name="user_id">
+                                        @foreach ($users as $user)
+                                            <option value="{{ $user->id }}" @if ($post->user_id == $user->id) selected @endif>{{ $user->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <!-- Description -->
