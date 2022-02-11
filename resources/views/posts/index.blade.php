@@ -33,7 +33,7 @@
                                                     <form action="{{route('posts.destroy', [$post->id])}}" method="POST" class="d-inline">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button onclick="return confirm('{{ __('Delete post?') }}')" type="submit">Delete</button>
+                                                        <button onclick="return confirm('{{ __('Delete post?') }}')" type="submit">{{ __('Delete') }}</button>
                                                     </form>
                                                 </td>
                                             </tr>

@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <!-- Table -->
-                <div class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
+                <div class="w-full mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
                     <header class="px-6 py-4 border-b border-gray-100">
                         <h2 class="font-semibold text-gray-800">{{ __('Create Post') }}</h2>
                     </header>
